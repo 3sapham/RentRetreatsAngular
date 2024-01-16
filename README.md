@@ -1,4 +1,4 @@
-# Group-Project-2
+# RentRetreat - Angular
 
 > A house renting system similar to AirBnb, where the users can rent out their houses to other. Using Angular for front- end and ASP.NET core for back- end. 
 
@@ -10,14 +10,13 @@
 ![Model](https://github.com/3sapham/RentRetreatsAngular/blob/main/Group-Project-2/ClientApp/src/assets/Skjermbilde-5.jpg)
 ![Model](https://github.com/3sapham/RentRetreatsAngular/blob/main/Group-Project-2/ClientApp/src/assets/Skjermbilde-6.jpg)
 ![Model](https://github.com/3sapham/RentRetreatsAngular/blob/main/Group-Project-2/ClientApp/src/assets/Skjermbilde-7.jpg)
-## Account login details:
 
+## Account login details:
 ### **Admin**:
 ```
 1. Emai: admin@admin.com
 2. Password: Admin123,
 ```
-
 
 ### **User John**: 
 ```
