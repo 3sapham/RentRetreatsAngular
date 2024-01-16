@@ -9,6 +9,7 @@
 ![Model](https://github.com/3sapham/RentRetreatsAngular/blob/main/Group-Project-2/ClientApp/src/assets/Skjermbilde-4.jpg)
 ![Model](https://github.com/3sapham/RentRetreatsAngular/blob/main/Group-Project-2/ClientApp/src/assets/Skjermbilde-5.jpg)
 ![Model](https://github.com/3sapham/RentRetreatsAngular/blob/main/Group-Project-2/ClientApp/src/assets/Skjermbilde-6.jpg)
+![Model](https://github.com/3sapham/RentRetreatsAngular/blob/main/Group-Project-2/ClientApp/src/assets/Skjermbilde-7.jpg)
 ## Account login details:
 
 ### **Admin**:
