@@ -1,0 +1,110 @@
+<div class="my-3">
+    <a class="btn btn-outline-dark rounded-pill" (click)="backToHouses()">Back to Houses</a>
+</div>
+
+<ng-container *ngIf="!house.BedroomImageUrl && !house.BathroomImageUrl">
+    <div class="shadow-sm overflow-hidden" style="border-radius: 15px">
+        <img [alt]="house.Title" [src]="house.HouseImageUrl" class="img-fill d-block w-100" style="height: 65vh; object-fit: cover;" />
+    </div>
+</ng-container>
+<ng-container *ngIf="house.BedroomImageUrl || house.BathroomImageUrl">
+    <div id="carouselImages" class="row carousel slide p-0 gx-2" data-bs-ride="true">
+        <div class="col-md-9">
+            <div class="carousel-inner shadow-sm overflow-hidden">
+                <div class="carousel-item active">
+                    <img [src]="house.HouseImageUrl" [alt]="house.Title" class="img-fill d-block w-100">
+                </div>
+                <ng-container *ngIf="house.BedroomImageUrl">
+                    <div class="carousel-item">
+                        <img [src]="house.BedroomImageUrl" alt="Bedroom of the house" class="img-fill d-block w-100">
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="house.BathroomImageUrl">
+                    <div class="carousel-item">
+                        <img [src]="house.BathroomImageUrl" alt="Bathroom of the house" class="d-block w-100">
+                    </div>
+                </ng-container>
+                <a class="carousel-control-prev" [href]="'#carouselImages'" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" [href]="'#carouselImages'" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div type="button" class="active shadow-sm overflow-hidden mb-2 indicator" [attr.data-bs-target]="'#carouselImages'" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1">
+                <img [src]="house.HouseImageUrl" [alt]="house.Title" class="img-fill d-block w-100">
+            </div>
+            <ng-container *ngIf="house.BedroomImageUrl || house.BathroomImageUrl">
+                <div type="button" class="shadow-sm overflow-hidden mb-2 indicator" [attr.data-bs-target]="'#carouselImages'" data-bs-slide-to="1" aria-label="Slide 2">
+                    <img [src]="house.BedroomImageUrl" alt="Bedroom of the house" class="img-fill d-block w-100">
+                </div>
+            </ng-container>
+            <ng-container *ngIf="house.BedroomImageUrl && house.BathroomImageUrl">
+                <div type="button" class="shadow-sm overflow-hidden indicator" [attr.data-bs-target]="'#carouselImages'" data-bs-slide-to="2" aria-label="Slide 3">
+                    <img [src]="house.BathroomImageUrl" alt="Bathroom of the house" class="img-fill d-block w-100">
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>
+
+
+<div class="row">
+    <div class="col-md-8 py-4">
+        <span class="title">{{ house.Title }}</span>
+        <div class="price">
+            <span>{{ house.PricePerNight | convertToCurrency: 'kr / night' }}</span>
+        </div>
+        <div class="description"><span>{{ house.Description }}</span></div>
+        <div class="room-info">
+            <span>{{ house.Bedrooms }} Bedrooms</span>
+            <span>{{ house.Bathrooms }} Bathrooms</span>
+        </div>
+        <div>
+            <dl class="row">
+                <dt class="col-sm-9">Location</dt>
+                <dd class="col-sm-3">{{ house.Location }}</dd>
+            </dl>
+            <h4 class="mb-2">Contact Host</h4>
+            <dl class="row">
+                <dt class="col-sm-9">Name</dt>
+                <dd class="col-sm-3">{{ house.User?.FirstName }} {{ house.User?.LastName }}</dd>
+                <dt class="col-sm-9">E-mail</dt>
+                <dd class="col-sm-3">{{ house.User?.Email }}</dd>
+                <dt class="col-sm-9">Phone Number</dt>
+                <dd class="col-sm-3">{{ house.User?.PhoneNumber }}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="col-md-4 shadow-sm reserve">
+        <form (ngSubmit)="onSubmit()" [formGroup]="reservationForm">
+            <div class="form-group">
+                <div class="form-floating mb-3 gx-1 mt-3">
+                    <input type="date" id="checkInDate" formControlName="checkInDate" class="form-control" [min]="currentDate" />
+                    <label for="checkInDate" class="form-label">Check In Date:</label>
+                </div>
+                <div class="form-floating mb-3 gx-1 mt-3">
+                    <input type="date" id="checkOutDate" formControlName="checkOutDate" class="form-control" [min]="checkIn" />
+                    <label for="checkOutDate" class="form-label">Check Out Date:</label>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary rounded-pill w-100" type="submit">Reserve House</button>
+        </form>
+        <dl class="row pt-4">
+            <dt class="col-sm-9">Price per night</dt>
+            <dd class="col-sm-3">{{ house.PricePerNight | convertToCurrency: 'kr' }}</dd>
+            <dt class="col-sm-9">Booking duration</dt>
+            <dd class="col-sm-3">{{ numberOfDays }} days</dd>
+            <dt class="col-sm-9 total"><strong>Total Price</strong> </dt>
+            <dd class="col-sm-3 total"><strong>{{ totalPrice | convertToCurrency: 'kr' }}</strong></dd>
+        </dl>
+    </div>
+</div>
+
+<div *ngIf="isAuthenticated()">
+    <a class="btn btn-secondary rounded-pill mx-2" [routerLink]="['/houseform', 'edit', house.HouseId, viewTitle]">Update</a>
+    <a class="btn btn-danger rounded-pill" (click)="deleteHouse(house)">Delete</a>
+</div>
+

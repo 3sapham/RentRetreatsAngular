@@ -1,0 +1,12 @@
+tbody tr {
+  cursor: pointer;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+#actions {
+    width: 100px;
+}

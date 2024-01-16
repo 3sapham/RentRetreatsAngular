@@ -1,0 +1,68 @@
+.carousel-item img {
+  height: 600px;
+  object-fit: cover;
+}
+
+.carousel-inner {
+  border-radius: 15px;
+}
+
+.indicator {
+  border-radius: 15px;
+}
+
+.indicator img{
+  height: 195px;
+  object-fit: cover; 
+}
+
+.reserve {
+  border-radius: 3rem;
+  padding: 2rem;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.room-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.room-info > span {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  border-radius: 2rem;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.location {
+    display: flex;
+    justify-content: space-between;
+}
+
+.location span:first-child {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+dl dd {
+  font-weight: 300;
+}
+
+.total {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-weight: bolder;
+}

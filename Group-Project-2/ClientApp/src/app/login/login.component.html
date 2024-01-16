@@ -1,0 +1,24 @@
+<div class="container p-5 shadow-sm col-md-5">
+    <h2 class="mb-3">Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <div class="form-floating mb-3">
+                <input type="email" id="Email" formControlName="Email" class="form-control" />
+                <label for="Email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" id="ProvidedPassword" formControlName="ProvidedPassword" class="form-control" />
+                <label for="Password">Password</label>
+            </div>
+        </div>
+        <button class="btn btn-primary rounded-pill w-100 my-2" type="submit" [disabled]="loginForm.invalid">Log in</button>
+        <div *ngIf="errorMessage" class="text-danger">
+            {{ errorMessage }}
+        </div>
+    </form>
+    <div class="my-4">
+        <p>Don't have an account?</p>
+        <button class="btn btn-secondary rounded-pill w-100" [routerLink]="['/register']">Register</button>
+    </div>
+</div>

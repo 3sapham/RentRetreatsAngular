@@ -1,0 +1,27 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+  font-weight: bold;
+}
+
+.nav-item {
+  margin: 0.4rem;
+  font-size: 15px;
+  font-weight: bold;
+  border-bottom: medium solid white;
+}
+
+.link-active {
+  border-bottom: medium solid blue;
+  color: blue;
+}
+
+.nav-item:not(.link-active):hover {
+  border-bottom: medium solid blue;
+  transition: 0.2s;
+}
+
+.logout {
+    cursor: pointer;
+}

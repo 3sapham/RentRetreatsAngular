@@ -1,0 +1,58 @@
+<div class="my-3">
+    <a class="btn btn-outline-dark rounded-pill" (click)="backToReservations()">Back to Reservations</a>
+</div>
+
+<h3 class="my-4">
+    Reservation {{reservation.ReservationId}}
+</h3>
+
+<div class="container row">
+    <img [src]="reservation.House?.HouseImageUrl" [alt]="reservation.House?.Title" class="col-md-6" routerLink="/house-details/{{ reservation.HouseId }}" />
+    <div class="details col-md-6 p-3">
+        <span class="title">{{ reservation.House?.Title }}</span>
+        <div class="price">
+            <span>{{ reservation.House?.PricePerNight ?? 0 | convertToCurrency: 'kr'}} / night</span>
+        </div>
+        <div class="description"><span>{{ reservation.House?.Description }}</span></div>
+        <div class="room-info my-3">
+            <span class="badge rounded-pill bg-light text-dark">{{ reservation.House?.Bedrooms }} Bedrooms</span>
+            <span class="badge rounded-pill bg-light text-dark">{{ reservation.House?.Bathrooms }} Bathrooms</span>
+        </div>
+        <dl class="row">
+            <dt class="col-sm-5"><strong>Location</strong></dt>
+            <dd class="col-sm-7">{{reservation.House?.Location}}</dd>
+
+            <dt class="col-sm-5"><strong>Host</strong></dt>
+            <dd class="col-sm-7">{{reservation.House?.User?.FirstName}} {{reservation.House?.User?.LastName}}</dd>
+
+            <dt class="col-sm-5"><strong>Date Created</strong></dt>
+            <dd class="col-sm-7">{{reservation.DateCreated | date: 'dd-MM-yyyy'}}</dd>
+            <hr />
+            <dt class="col-sm-5"><strong>Check-In</strong></dt>
+            <dd class="col-sm-7">{{reservation.CheckInDate | date: 'dd-MM-yyyy'}}</dd>
+
+            <dt class="col-sm-5"><strong>Check-Out</strong></dt>
+            <dd class="col-sm-7">{{reservation.CheckOutDate | date: 'dd-MM-yyyy'}}</dd>
+            <hr />
+            <dt class="col-sm-5"><strong>Booking duration</strong></dt>
+            <dd class="col-sm-7">{{reservation.BookingDuration}} days</dd>
+
+            <dt class="col-sm-5"><strong>Price per night</strong> </dt>
+            <dd class="col-sm-7">{{reservation.House?.PricePerNight ?? 0 | convertToCurrency: 'kr'}}</dd>
+            <hr />
+            <dt class="col-sm-5"><strong>Total Price</strong> </dt>
+            <dd class="col-sm-7"><strong>{{reservation.TotalPrice | convertToCurrency: 'kr'}}</strong></dd>
+        </dl>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <a class="btn btn-secondary rounded-pill w-100" [routerLink]="['/reservationform', 'edit', reservation.ReservationId, viewTitle]">Update</a>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-danger rounded-pill w-100" (click)="deleteReservation(reservation)">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

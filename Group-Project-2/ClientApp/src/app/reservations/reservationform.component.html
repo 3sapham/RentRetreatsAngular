@@ -1,0 +1,44 @@
+<div class="container p-5 shadow-sm">
+
+    <h2>{{ isEditMode ? 'Update' : 'Create'}} Reservation</h2>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="reservationForm">
+        <div class="form-group row">
+            <div class="form-floating col-md-4 mb-3 gx-1">
+                <select #houseSelect formControlName="houseId" class="form-select" (change)="changeHouse(houseSelect.value)">
+                    <option value="" disabled selected>Select a house...</option>
+                    <option *ngFor="let house of houseSelectList" [value]="house.HouseId">{{ house.Title }}</option>
+                </select>
+                <label for="houseId" class="form-label">HouseId:</label>
+            </div>
+            <div class="form-floating col-md-3 mb-3 gx-1">
+                <input type="date" id="checkInDate" formControlName="checkInDate" class="form-control" [min]="currentDate"/>
+                <label for="checkInDate" class="form-label">Check In Date:</label>
+            </div>
+            <div class="form-floating col-md-3 mb-3 gx-1">
+                <input type="date" id="checkOutDate" formControlName="checkOutDate" class="form-control" [min]="checkIn"/>
+                <label for="checkOutDate" class="form-label">Check Out Date:</label>
+            </div>
+            <div class="col-md-2">
+                <button class='btn btn-primary rounded-pill' style="height: 50px;" type="submit" [disabled]="reservationForm.invalid">
+                    {{ isEditMode ? 'Update' : 'Create'}} Reservation
+                </button>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="chosenHouse" class="reservation-info row align-items-center">
+        <img [src]="chosenHouse.HouseImageUrl" [alt]="chosenHouse.Description" class="col-md-4" routerLink="/house-details/{{ chosenHouse.HouseId }}" />
+        <div class="col-md-8 px-5">
+            <h5>{{ chosenHouse.Title }}</h5>
+            <dl class="row">
+                <dt class="col-sm-9">Price per night</dt>
+                <dd class="col-sm-3">{{ chosenHouse.PricePerNight | convertToCurrency: 'kr' }}</dd>
+                <dt class="col-sm-9">Booking duration</dt>
+                <dd class="col-sm-3">{{ numberOfDays }} days</dd>
+                <dt class="col-sm-9 total"><strong>Total Price</strong></dt>
+                <dd class="col-sm-3 total"><strong>{{ totalPrice | convertToCurrency: 'kr' }}</strong></dd>
+            </dl>
+        </div>
+    </div>
+    <button *ngIf="isEditMode || isCreateMode" class='btn btn-secondary rounded-pill my-3' (click)="backToReservations()">Back</button>
+</div>
