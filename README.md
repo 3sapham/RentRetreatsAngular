@@ -1,6 +1,6 @@
 # RentRetreat - Angular
-
-> A house renting system similar to AirBnb, where the users can rent out their houses to other. Using Angular for front- end and ASP.NET core for back- end. 
+A house renting system where visitors can rent out their houses or/and rent available houses based on their roles. There are two main roles; tenant and host. Tenants can rent other houses, while hosts can additionally rent out their houses. In the application users can do CRUD-operations (create, read, update, delete) houses or/and reservations. Hosts can only update and delete their own houses. In addition there is also Admin, who can do all the operations on all the houses and reservations.
+The application is implemented using Angular for front-end and ASP.NET core for back-end.
 
 ## Preview of the application:
 ![Model](https://github.com/3sapham/RentRetreatsAngular/blob/main/Group-Project-2/ClientApp/src/assets/Skjermbilde-1.jpg)
